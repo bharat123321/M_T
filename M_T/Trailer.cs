@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace M_T
 {
-    public partial class UserControl1 : UserControl
+    public partial class Trailer : Form
     {
-        public UserControl1()
+        public Trailer()
         {
             InitializeComponent();
         }

@@ -34,23 +34,41 @@ namespace M_T
 
         }
 
-        private void admin_dasboard_Load(object Form)
+         public void admin_Load(object Form)
         {
+            
+        }
+
+        private void addmovie_Click(object sender, EventArgs e)
+        {
+             
             if (this.changepanel.Controls.Count > 0)
             {
                 this.changepanel.Controls.RemoveAt(0);
-                Form f = Form as Form;
+                Form f = new AddMovie();
                 f.TopLevel = false;
-                f.Dock = DockStyle.Bottom;
+                f.Dock = DockStyle.Fill;
                 this.changepanel.Controls.Add(f);
                 this.changepanel.Tag = f;
                 f.Show();
             }
         }
 
-        private void addmovie_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            admin_dasboard_Load(new AddMovie());
+          
+            if (this.changepanel.Controls.Count > 0)
+            {
+                this.changepanel.Controls.RemoveAt(0);
+                Form f = new Trailer();
+                f.TopLevel = false;
+                f.Dock = DockStyle.Fill;
+                this.changepanel.Controls.Add(f);
+                this.changepanel.Tag = f;
+                f.Show();
+            }
         }
+
+          
     }
 }

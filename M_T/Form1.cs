@@ -27,7 +27,7 @@ namespace M_T
                 {
                     conn.Open();
 
-                    String query = "select * from users where email = '" + textBox1.Text + "' and password ='" + textBox2.Text + "'";
+                    String query = "select * from user where email = '" + textBox1.Text + "' and password ='" + textBox2.Text + "'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlDataReader da;
 
@@ -35,12 +35,14 @@ namespace M_T
                     if (da.Read())
                     {
                         this.Hide();
-                       
+
                         dashboard d = new dashboard();
+                        d.SetEmail(textBox1.Text);
+                        EmailManager.SetEmail(textBox1.Text);
                         d.Show();
 
                     }
-                    else if (textBox1.Text =="admin" && textBox2.Text=="admin")
+                    else if (textBox1.Text == "admin" && textBox2.Text == "admin")
                     {
                         this.Hide();
                         admin_dasboard d = new admin_dasboard();
@@ -86,6 +88,11 @@ namespace M_T
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

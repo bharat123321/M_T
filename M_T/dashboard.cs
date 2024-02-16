@@ -13,9 +13,24 @@ namespace M_T
 {
     public partial class dashboard : Form
     {
+        List<Panel> listpanel = new List<Panel>();
+        int index;
+        private string email;
         public dashboard()
         {
             InitializeComponent();
+            
+        }
+       
+
+        public void SetEmail(string email)
+        {
+            this.email = email;
+        }
+
+        public string GetEmail()
+        {
+            return email;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -37,17 +52,18 @@ namespace M_T
 
         private void dashboard_Load(object sender, EventArgs e)
         {
+
             MySqlConnection conn = new MySqlConnection("server=localhost;database=c#_project;username=root;password=");
             try
             {
                 conn.Open();
-                String query = "select * from movie_info ";
+                String query = "select * from movie_inf ";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridView1.DataSource = dt;
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -74,17 +90,17 @@ namespace M_T
             {
                 conn.Open();
                 String s = search_box.Text;
-                string query = "select * from movie_info where `Movie Name` like '%" + s + "%'";
+                string query = "select * from movie_inf where `Movie_Name` like '%" + s + "%'";
                 MySqlCommand comm = new MySqlCommand(query, conn);
                 MySqlDataAdapter da = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridView1.DataSource = dt;
+                dataGridView.DataSource = dt;
                 conn.Close();
             }
             catch (Exception es)
             {
-
+                MessageBox.Show(es.Message);
             }
 
 
@@ -92,13 +108,100 @@ namespace M_T
 
         private void Buy_ticket_Click(object sender, EventArgs e)
         {
-            dataGridView1.Hide();
-            buypanel.Show();
+
+            if (this.check.Controls.Count > 0)
+            {
+                this.check.Controls.RemoveAt(0);
+            }
+             
+            Form f = new buymovie();
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.check.Controls.Add(f);
+            this.check.Tag = f;
+            f.Show();
+            
         }
 
         private void buypanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void label1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void trailer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void movie_trailer_Click(object sender, EventArgs e)
+        {
+            if (this.check.Controls.Count > 0)
+            {
+                this.check.Controls.RemoveAt(0);
+            }
+
+            Form f = new A_Movie();
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.check.Controls.Add(f);
+            this.check.Tag = f;
+            f.Show();
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void movielist_Click(object sender, EventArgs e)
+        {
+            if (this.check.Controls.Count > 0)
+            {
+                this.check.Controls.RemoveAt(0);
+            }
+
+            Form f = new movielist();
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.check.Controls.Add(f);
+            this.check.Tag = f;
+            f.Show();
         }
     }
 }

@@ -52,7 +52,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(0, 64, 0);
+            panel1.BackColor = Color.Black;
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(6, 1);
@@ -88,7 +88,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(0, 64, 0);
+            panel2.BackColor = Color.Black;
             panel2.Controls.Add(log);
             panel2.Controls.Add(reg);
             panel2.Controls.Add(comboBox1);
