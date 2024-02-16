@@ -35,12 +35,18 @@ namespace M_T
                     if (da.Read())
                     {
                         this.Hide();
-                        // admin_dasboard d = new admin_dasboard();
+                       
                         dashboard d = new dashboard();
                         d.Show();
 
                     }
-                     
+                    else if (textBox1.Text =="admin" && textBox2.Text=="admin")
+                    {
+                        this.Hide();
+                        admin_dasboard d = new admin_dasboard();
+                        d.Show();
+                    }
+
                     else
                     {
                         MessageBox.Show("Invalid Username and Password ");

@@ -62,26 +62,23 @@ namespace M_T
                             myre = sqlcom.ExecuteReader();
                             if (myre.Read())
                             {
-                                MessageBox.Show("Email already Exit");
+                                MessageBox.Show("Email already Exit,Try another email");
                             }
                             else
                             {
-                                MessageBox.Show("Valid");
+                                myre.Close();
+
+                                String query = "insert into users values(null,@user,@pass,@email,@gender,@address)";
+                                MySqlCommand com = new MySqlCommand(query, con);
+                                com.Parameters.AddWithValue("@user", users);
+                                com.Parameters.AddWithValue("@pass", passs);
+                                com.Parameters.AddWithValue("@email", email);
+                                com.Parameters.AddWithValue("@gender", gender);
+                                com.Parameters.AddWithValue("@address", address);
+                                com.ExecuteNonQuery();
+                                MessageBox.Show("Your Account is Created.");
                             }
-
-
-
-                            String query = "insert into users values(null,@user,@pass,@email,@gender,@address)";
-                            MySqlCommand com = new MySqlCommand(query, con);
-                            com.Parameters.AddWithValue("@user", users);
-                            com.Parameters.AddWithValue("@pass", passs);
-                            com.Parameters.AddWithValue("@email", email);
-                            com.Parameters.AddWithValue("@gender", gender);
-                            com.Parameters.AddWithValue("@address", address);
-                            com.ExecuteNonQuery();
-                            MessageBox.Show("Your Account is Created.");
                         }
-
                         else
                         {
                             MessageBox.Show("Invalid Email Address");
@@ -103,11 +100,11 @@ namespace M_T
                 con.Close();
             }
             /* textBox1.Text = "";
-             textBox2.Text = "";*/
-            textBox3.Text = "";
+             textBox2.Text = "";
+            textBox3.Text = ""; */
             textBox4.Text = "";
             textBox5.Text = "";
-            comboBox1.Text = "";
+            
 
         }
 

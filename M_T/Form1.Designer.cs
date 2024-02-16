@@ -39,13 +39,15 @@
             label4 = new Label();
             textBox1 = new TextBox();
             label3 = new Label();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(0, 64, 0);
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
             panel1.Location = new Point(5, 1);
@@ -166,6 +168,16 @@
             label3.TabIndex = 4;
             label3.Text = "Email";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.movieticketing;
+            pictureBox1.Location = new Point(21, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 66);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -182,6 +194,7 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -198,5 +211,6 @@
         private TextBox textBox2;
         private Label label4;
         private CheckBox rememberbox;
+        private PictureBox pictureBox1;
     }
 }

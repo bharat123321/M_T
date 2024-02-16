@@ -75,18 +75,29 @@ namespace M_T
                 conn.Open();
                 String s = search_box.Text;
                 string query = "select * from movie_info where `Movie Name` like '%" + s + "%'";
-                MySqlCommand comm = new MySqlCommand(query,conn);
+                MySqlCommand comm = new MySqlCommand(query, conn);
                 MySqlDataAdapter da = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dataGridView1.DataSource = dt;
                 conn.Close();
             }
-            catch(Exception es)
+            catch (Exception es)
             {
 
             }
 
+
+        }
+
+        private void Buy_ticket_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Hide();
+            buypanel.Show();
+        }
+
+        private void buypanel_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
